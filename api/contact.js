@@ -1,8 +1,6 @@
-const { Resend } = require('resend')
+import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end()
 
   const { name, email, message } = req.body
@@ -10,6 +8,8 @@ module.exports = async function handler(req, res) {
   if (!name || !email || !message) {
     return res.status(400).json({ error: 'Faltan campos requeridos.' })
   }
+
+  const resend = new Resend(process.env.RESEND_API_KEY)
 
   try {
     await resend.emails.send({
