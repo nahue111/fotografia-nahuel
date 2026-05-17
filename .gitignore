@@ -1,0 +1,17 @@
+node_modules
+dist
+.env
+.DS_Store
+
+# Archivos RAW y originales pesados
+*.ARW
+*.arw
+Fotos portafolio/
+
+# Carpetas externas
+cult-ui/
+taste-skill/
+
+# Archivos temporales
+hf_*.mp4
+hf_*.png
