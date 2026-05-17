@@ -31,8 +31,23 @@ export default function Contact() {
 
   const set = (field) => (e) => setForm({ ...form, [field]: e.target.value })
 
+  const validate = () => {
+    const nameParts = form.name.trim().split(/\s+/)
+    if (nameParts.length < 2 || nameParts.some(p => p.length < 2))
+      return 'Ingresá tu nombre y apellido.'
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(form.email.trim()))
+      return 'El email no es válido.'
+    if (form.message.trim().length < 10)
+      return 'El mensaje debe tener al menos 10 caracteres.'
+    if (form.message.trim().length > 2000)
+      return 'El mensaje es demasiado largo (máx. 2000 caracteres).'
+    return null
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
+    const validationError = validate()
+    if (validationError) { setError(validationError); return }
     setLoading(true)
     setError('')
     try {
