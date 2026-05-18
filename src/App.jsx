@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect, useLayoutEffect } from 'react'
 import Navigation from './components/Navigation'
 import Footer from './components/Footer'
 import Home from './pages/Home'
@@ -7,20 +7,23 @@ import NuestroEquipo from './pages/NuestroEquipo'
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation()
-  useEffect(() => {
+  useLayoutEffect(() => {
     document.documentElement.style.scrollBehavior = 'auto'
     if (!hash) {
       window.scrollTo(0, 0)
-    } else {
+    }
+    document.documentElement.style.scrollBehavior = ''
+  }, [pathname, hash])
+
+  useEffect(() => {
+    if (hash) {
       setTimeout(() => {
         const el = document.getElementById(hash.slice(1))
         if (el) el.scrollIntoView()
       }, 100)
     }
-    setTimeout(() => {
-      document.documentElement.style.scrollBehavior = ''
-    }, 200)
   }, [pathname, hash])
+
   return null
 }
 
