@@ -8,7 +8,14 @@ import NuestroEquipo from './pages/NuestroEquipo'
 function ScrollToTop() {
   const { pathname, hash } = useLocation()
   useEffect(() => {
-    if (!hash) window.scrollTo(0, 0)
+    if (!hash) {
+      window.scrollTo(0, 0)
+    } else {
+      setTimeout(() => {
+        const el = document.getElementById(hash.slice(1))
+        if (el) el.scrollIntoView({ behavior: 'smooth' })
+      }, 100)
+    }
   }, [pathname, hash])
   return null
 }
