@@ -87,7 +87,7 @@ export default function GearTeaser() {
             src="/gear-reel.mp4"
             muted
             playsInline
-            preload="metadata"
+            preload="none"
             className="w-full h-full object-contain"
           />
         </div>
