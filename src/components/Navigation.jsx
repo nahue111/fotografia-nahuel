@@ -48,20 +48,10 @@ export default function Navigation() {
 
         <ul className="hidden md:flex items-center gap-10">
           {navLinks.map(({ label, href }) => {
-            const isRoute = !href.includes('#')
-            const isActive = isRoute && location.pathname === href
+            const isActive = !href.includes('#') && location.pathname === href
             return (
               <li key={label}>
-                {isRoute ? (
-                  <Link
-                    to={href}
-                    className={isActive ? activeLinkClass : linkClass}
-                  >
-                    {label}
-                  </Link>
-                ) : (
-                  <a href={href} className={linkClass}>{label}</a>
-                )}
+                <a href={href} className={isActive ? activeLinkClass : linkClass}>{label}</a>
               </li>
             )
           })}
@@ -82,29 +72,17 @@ export default function Navigation() {
         }`}
       >
         <ul className="px-6 pb-10 pt-4 flex flex-col gap-7 border-t border-[rgba(0,0,0,0.06)]">
-          {navLinks.map(({ label, href }) => {
-            const isRoute = !href.includes('#')
-            return (
-              <li key={label}>
-                {isRoute ? (
-                  <Link
-                    to={href}
-                    className="font-serif italic text-3xl text-[#18180F]/80 hover:text-[#18180F] transition-colors"
-                  >
-                    {label}
-                  </Link>
-                ) : (
-                  <a
-                    href={href}
-                    className="font-serif italic text-3xl text-[#18180F]/80 hover:text-[#18180F] transition-colors"
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    {label}
-                  </a>
-                )}
-              </li>
-            )
-          })}
+          {navLinks.map(({ label, href }) => (
+            <li key={label}>
+              <a
+                href={href}
+                className="font-serif italic text-3xl text-[#18180F]/80 hover:text-[#18180F] transition-colors"
+                onClick={() => setMobileOpen(false)}
+              >
+                {label}
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
     </header>

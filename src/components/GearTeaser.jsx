@@ -66,8 +66,8 @@ export default function GearTeaser() {
             </p>
           </div>
           <div className="gear-reveal mt-10">
-            <Link
-              to="/nuestro-equipo"
+            <a
+              href="/nuestro-equipo"
               className="group inline-flex items-center gap-3 border border-gold/40 text-gold text-[12px] tracking-[0.12em] uppercase px-7 py-4 rounded-lg hover:bg-gold hover:text-[#18180F] transition-all duration-300 font-sans"
             >
               Ver nuestro equipo completo
@@ -76,7 +76,7 @@ export default function GearTeaser() {
                 strokeWidth={1.5}
                 className="group-hover:translate-x-1 transition-transform duration-300"
               />
-            </Link>
+            </a>
           </div>
         </div>
 
