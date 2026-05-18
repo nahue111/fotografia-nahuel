@@ -6,8 +6,10 @@ import Home from './pages/Home'
 import NuestroEquipo from './pages/NuestroEquipo'
 
 function ScrollToTop() {
-  const { pathname } = useLocation()
-  useEffect(() => { window.scrollTo(0, 0) }, [pathname])
+  const { pathname, hash } = useLocation()
+  useEffect(() => {
+    if (!hash) window.scrollTo(0, 0)
+  }, [pathname, hash])
   return null
 }
 

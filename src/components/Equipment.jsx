@@ -185,7 +185,7 @@ export default function Equipment({ standalone = false }) {
 
         <div className="mt-16 md:mt-20 flex justify-center">
           <a
-            href="/"
+            href="/#portfolio"
             className="flex items-center gap-3 text-[12px] tracking-[0.18em] text-gold uppercase border border-gold/50 hover:border-gold hover:bg-gold/8 px-8 py-4 rounded-lg transition-all duration-200 font-sans"
           >
             Ver portfolio
